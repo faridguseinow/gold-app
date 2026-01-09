@@ -1,0 +1,166 @@
+.trucks-page {
+  padding: 72px 16px;
+}
+
+/* ================== CARD ================== */
+
+.truck-card {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .08s ease, opacity .08s ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &.is-active {
+    box-shadow: 0 0 0 2px #f3c64f;
+  }
+
+  &.is-loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .truck-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+
+    .truck-auto {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .status {
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+
+      &.status-gömrükdən-çıxıb {
+        background: #00972d;
+        color: #fff;
+      }
+
+      &.status-gömrükdədir {
+        background: #bba31b;
+        color: #000;
+      }
+
+      &.status-serheddedir {
+        background: #a32cc0;
+        color: #fff;
+      }
+
+      &.status-hələ-avropadadır {
+        background: #555;
+        color: #fff;
+      }
+    }
+  }
+
+  .truck-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  .truck-loading {
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+}
+
+/* ================== MODAL ================== */
+
+.truck-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 50;
+
+  .truck-modal {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    max-height: calc(100vh - 100px);
+    background: var(--gray);
+    padding: 14px;
+    overflow-y: auto;
+    border-radius: 16px;
+
+    /* ===== HEADER ===== */
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+
+      .modal-auto {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .modal-status {
+        font-size: 12px;
+        opacity: 0.7;
+      }
+
+      button {
+        background: none;
+        border: none;
+        font-size: 22px;
+        color: inherit;
+        cursor: pointer;
+      }
+    }
+
+    /* ===== INFO ===== */
+
+    .modal-info {
+      font-size: 13px;
+      line-height: 1.45;
+      margin-bottom: 14px;
+
+      div {
+        margin-bottom: 2px;
+      }
+
+      b {
+        font-weight: 600;
+      }
+    }
+
+    /* ===== TABLE ===== */
+
+    .modal-table {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 14px;
+
+      .modal-row {
+        display: grid;
+        grid-template-columns: 1.5fr 0.5fr 1.5fr 0.5fr 1.5fr;
+        gap: 5px;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        align-items: center;
+      }
+
+      .modal-row--head {
+        font-weight: 600;
+        opacity: 0.6;
+        padding-top: 10px;
+        padding-bottom: 6px;
+      }
+    }
+  }
+}

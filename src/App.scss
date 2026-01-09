@@ -6,7 +6,7 @@
     --bg: #fff;
     --text: #000000;
     --shadow: rgba(0, 0, 0, 0.1);
-    --color-primary: #825ca6;
+    --color-primary: #ecbb47;
 }
 
 .dark-theme {
@@ -14,7 +14,7 @@
     --bg: #000000;
     --text: #ffffff;
     --shadow: rgba(255, 255, 255, 0.1);
-    --color-primary: #825ca6;
+    --color-primary: #ecbb47;
 }
 
 // Fonts
@@ -103,110 +103,6 @@ body,
     }
 }
 
-.pin-lock {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: calc(var(--vh, 1vh) * 100);
-    background: var(--color-primary);
-    text-align: center;
-    gap: 16px;
-
-    img {
-        width: 150px;
-    }
-
-    p {
-        width: 250px;
-        font-size: 18px;
-        color: var(--bg);
-        font-family: var(--f-regular);
-    }
-
-    h1 {
-        margin-top: 32px;
-        font-size: 24px;
-        color: var(--bg);
-        font-family: var(--f-bold);
-
-    }
-
-    .pin-dots {
-        display: flex;
-        gap: 10px;
-        margin: 16px 0;
-
-        span {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            border: 1px solid var(--gray);
-            background: transparent;
-            transition: bckgrd 0.2s;
-
-            &.filled {
-                background: var(--gray);
-            }
-        }
-
-        &.error {
-            animation: shake 0.3s ease-in-out;
-
-            span {
-                border-color: red;
-
-                &.filled {
-                    background: rgb(255, 0, 0);
-                }
-            }
-        }
-    }
-
-    .pin-pad {
-        display: grid;
-        grid-template-columns: repeat(3, 60px);
-        gap: 15px;
-
-        .digit-btn {
-            width: 60px;
-            height: 60px;
-            font-size: 22px;
-            background: var(--gray);
-            border: none;
-            border-radius: 12px;
-            transition: transform 0.1s, bckgrd 0.2s;
-            cursor: pointer;
-
-            &:active {
-                transform: scale(0.9);
-                background: var(--gray);
-            }
-        }
-    }
-}
-
-@keyframes shake {
-
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-
-    25% {
-        transform: translateX(-8px);
-    }
-
-    50% {
-        transform: translateX(8px);
-    }
-
-    75% {
-        transform: translateX(-8px);
-    }
-}
-
-
 .switch {
     position: relative;
     display: inline-block;
@@ -274,3 +170,4 @@ body,
     padding: 8px 16px;
     z-index: 9999999;
 }
+

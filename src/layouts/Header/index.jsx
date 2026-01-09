@@ -18,7 +18,7 @@ export default function Index() {
     <div className="header">
       <div className="logo">
         <img src={LogoSM} width={40} alt="logo symbol" />
-        {/* <img src={logoText} width={100} alt="logo text" /> */}
+        <img src={logoText} width={100} alt="logo text" />
       </div>
 
       <div className="theme_switcher">

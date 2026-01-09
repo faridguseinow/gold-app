@@ -1,5 +1,5 @@
 .numbers_container {
-    padding: 72px 16px 93px;
+    padding: 72px 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,12 +34,12 @@
             .num_sec_top {
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
                 padding: 6px;
                 font-weight: 600;
 
                 p {
-                    font-family: var(--f-bold);
+                    font-family: var(--f-regular);
                     padding-left: 16px;
                     font-size: 18px;
                 }

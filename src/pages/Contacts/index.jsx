@@ -29,7 +29,7 @@ export default function index() {
 
           <div className="num_sec_top">
 
-            {/* <img src={Num1} width={35} /> */}
+            <img src={Num1} width={35} />
             <p>Главный офис</p>
           </div>
 
@@ -46,7 +46,7 @@ export default function index() {
         <div className="num_section xrizant">
 
           <div className="num_sec_top">
-            {/* <img src={Num2} width={30} /> */}
+            <img src={Num2} width={30} />
             <p>Хризантема и Зелень</p>
           </div>
 
@@ -63,7 +63,7 @@ export default function index() {
         <div className="num_section plant">
 
           <div className="num_sec_top">
-            {/* <img src={Num6} width={35} /> */}
+            <img src={Num6} width={35} />
             <p>Комнатные растения</p>
           </div>
 
@@ -86,7 +86,7 @@ export default function index() {
         <div className="num_section exotics">
 
           <div className="num_sec_top">
-            {/* <img src={Num4} width={35} /> */}
+            <img src={Num4} width={35} />
             <p>Экзотические цветы</p>
           </div>
 
@@ -126,7 +126,7 @@ export default function index() {
         <div className="num_section kitay">
 
           <div className="num_sec_top">
-            {/* <img src={Num9} width={35} /> */}
+            <img src={Num9} width={35} />
             <p>Цветы из Китая</p>
           </div>
 
@@ -152,7 +152,7 @@ export default function index() {
         <div className="num_section suxocvet">
 
           <div className="num_sec_top">
-            {/* <img src={Num10} width={35} /> */}
+            <img src={Num10} width={35} />
             <p>Сухоцветы</p>
           </div>
 
@@ -178,7 +178,7 @@ export default function index() {
         <div className="num_section rosekenya">
 
           <div className="num_sec_top">
-            {/* <img src={Num357} width={35} /> */}
+            <img src={Num357} width={35} />
             <p>Розы из Кении</p>
           </div>
 
@@ -218,7 +218,7 @@ export default function index() {
         <div className="num_section roseecuador">
 
           <div className="num_sec_top">
-            {/* <img src={Num357} width={35} /> */}
+            <img src={Num357} width={35} />
             <p>Розы из Эквадора</p>
           </div>
 
@@ -258,7 +258,7 @@ export default function index() {
         <div className="num_section rosewater">
 
           <div className="num_sec_top">
-            {/* <img src={Num357} width={35} /> */}
+            <img src={Num357} width={35} />
             <p>Розы на воде</p>
           </div>
 
@@ -281,7 +281,7 @@ export default function index() {
         <div className="num_section upakovka">
 
           <div className="num_sec_top">
-            {/* <img src={Num8} width={35} /> */}
+            <img src={Num8} width={35} />
             <p>Упаковка</p>
           </div>
 
@@ -304,7 +304,7 @@ export default function index() {
         <div className="num_section delivery">
 
           <div className="num_sec_top">
-            {/* <img src={Num1} width={35} /> */}
+            <img src={Num1} width={35} />
             <p>Сбор заказов</p>
           </div>
 

@@ -1,5 +1,5 @@
 .pricelist_container {
-    padding: 72px 16px 93px;
+    padding: 72px 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -87,6 +87,7 @@
             }
         }
     }
+
     .filter_panel {
         display: flex;
         flex-direction: column;
