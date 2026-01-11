@@ -11,9 +11,12 @@ export default function Trucks() {
   const [activeTruck, setActiveTruck] = useState(null);
   const [activeId, setActiveId] = useState(null);
   const [loadingId, setLoadingId] = useState(null);
+  const [loadingList, setLoadingList] = useState(true);
 
   /* ===== LOAD LIST ===== */
   useEffect(() => {
+    setLoadingList(true);
+
     fetch(API)
       .then(r => r.json())
       .then(data => {
@@ -21,7 +24,8 @@ export default function Trucks() {
           setTrucks(data);
         }
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoadingList(false));
   }, []);
 
   /* ===== OPEN MODAL ===== */
@@ -38,6 +42,15 @@ export default function Trucks() {
       })
       .finally(() => setLoadingId(null));
   };
+
+  /* ===== GLOBAL LOADING ===== */
+  if (loadingList) {
+    return (
+      <div className="trucks-loading">
+        Загрузка транспорта…
+      </div>
+    );
+  }
 
   return (
     <div className="trucks-page">

@@ -12,6 +12,8 @@ import { AliveScope, KeepAlive } from 'react-activation';
 import './App.scss';
 import './reset.css';
 
+import PinLock from './components/PinLock';
+
 import Contacts from './pages/Contacts';
 import Price from './pages/Price';
 import Trucks from './pages/Trucks';
@@ -21,8 +23,8 @@ import Footer from './layouts/Footer';
 
 import InstallMobileIcon from '@mui/icons-material/InstallMobile';
 
-// ———————————————
-// Scroll Restoration (всё кроме /price)
+// =======================
+// Scroll Restoration
 function ScrollHandler() {
   const location = useLocation();
 
@@ -35,8 +37,8 @@ function ScrollHandler() {
   return null;
 }
 
-// ———————————————
-// Установка PWA + --vh обновление
+// =======================
+// PWA + VH
 function SetupHandlers() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showInstall, setShowInstall] = useState(false);
@@ -49,29 +51,23 @@ function SetupHandlers() {
 
     updateVH();
     window.addEventListener('resize', updateVH);
-
     return () => window.removeEventListener('resize', updateVH);
   }, []);
 
   useEffect(() => {
-    const handler = (e) => {
+    const handler = e => {
       e.preventDefault();
       setDeferredPrompt(e);
       setShowInstall(true);
     };
 
     window.addEventListener('beforeinstallprompt', handler);
-
     return () => window.removeEventListener('beforeinstallprompt', handler);
   }, []);
 
   const handleInstall = async () => {
     if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      console.log('✅ PWA установлено');
-    }
+    await deferredPrompt.prompt();
     setDeferredPrompt(null);
     setShowInstall(false);
   };
@@ -79,15 +75,28 @@ function SetupHandlers() {
   return (
     showInstall && (
       <button className="install-btn" onClick={handleInstall}>
-        <InstallMobileIcon/>Установить приложение
+        <InstallMobileIcon /> Установить приложение
       </button>
     )
   );
 }
 
-// ———————————————
-// Основной компонент
+// =======================
+// APP
 function App() {
+  const [unlocked, setUnlocked] = useState(
+    () => localStorage.getItem('pin_ok') === '1'
+  );
+
+  // 🔒 ПОКА PIN НЕ ВВЕДЁН — ТОЛЬКО ЭТО
+  if (!unlocked) {
+    return <PinLock onSuccess={() => {
+      localStorage.setItem('pin_ok', '1');
+      setUnlocked(true);
+    }} />;
+  }
+
+  // 🔓 ПОСЛЕ PIN — ПОЛНОЕ ПРИЛОЖЕНИЕ
   return (
     <Router>
       <AliveScope>
