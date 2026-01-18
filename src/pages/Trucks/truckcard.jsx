@@ -22,6 +22,7 @@ export default function TruckCard({ truck, onClick, active, loading }) {
 
       <div className="truck-bottom">
         <span>{truck.warehouse}</span>
+        <span>{truck.type}</span>
       </div>
     </div>
   );

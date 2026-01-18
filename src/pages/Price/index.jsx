@@ -10,8 +10,8 @@ export default function Price() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [categories, setCategories] = useState([]);
 
-  const increaseFontSize = () => setFontSize(f => Math.min(f + 1, 20));
-  const decreaseFontSize = () => setFontSize(f => Math.max(f - 1, 8));
+  const increaseFontSize = () => setFontSize(f => Math.min(f + 1, 24));
+  const decreaseFontSize = () => setFontSize(f => Math.max(f - 1, 12));
 
   useEffect(() => {
     fetch('https://gfcc-price-api-server.onrender.com/api/prices')

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './style.scss';
 
-import Logo from '../../assets/icons/logopng.png';
+import Logo from '../../assets/icons/goldOasisAds_LOGO.ico';
 
 const MASTER_PIN = '2543';
 
@@ -37,7 +37,7 @@ export default function PinLock({ onSuccess }) {
     <div className="pin-lock">
       <div className="pin-logo">
         <img src={Logo} alt="" />
-        <div className="pin-title">Приложение для сотрудников</div>
+        <div className="pin-title">Приложение для сотрудников<br />Goldeon Flowers - Oasis Flowers</div>
       </div>
 
       <div className={`pin-dots ${error ? 'error' : ''}`}>

@@ -30,6 +30,7 @@ export default function TruckModal({ truck, onClose }) {
           <div className="modal-table">
             <div className="modal-row modal-row--head">
               <div>Поставщик</div>
+              <div>Тел.</div>
               <div>Кор.</div>
               <div>Марк.</div>
               <div>Прим.</div>
@@ -39,6 +40,7 @@ export default function TruckModal({ truck, onClose }) {
             {truck.details?.map((row, i) => (
               <div className="modal-row" key={i}>
                 <div>{row.supplier}</div>
+                <div>{row.cc}</div>
                 <div>{row.boxes}</div>
                 <div>{row.mark}</div>
                 <div>{row.note}</div>

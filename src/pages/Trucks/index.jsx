@@ -146,53 +146,45 @@ export default function Trucks() {
     );
   }, [trucks, detailsMap, search, statusFilter]);
 
-const openTruck = truck => {
-  setActiveId(truck.truckId);
+  const openTruck = truck => {
+    setActiveId(truck.truckId);
 
-  // открываем модалку сразу
-  setActiveTruck({
-    ...truck,
-    loading: true,
-    details: []
-  });
+    // 1️⃣ если детали уже есть — открываем сразу
+    if (detailsMap[truck.truckId]?.length) {
+      setActiveTruck({
+        ...truck,
+        details: detailsMap[truck.truckId]
+      });
+      return;
+    }
 
-  const key = `truck_details_${truck.truckId}`;
-  const timeKey = `${key}_time`;
-  const cached = localStorage.getItem(key);
-  const cachedTime = localStorage.getItem(timeKey);
-  const now = Date.now();
+    // 2️⃣ если нет — загружаем как раньше
+    fetch(`${API}?id=${encodeURIComponent(truck.truckId)}`)
+      .then(r => r.json())
+      .then(data => {
+        if (!data?.error) {
+          setDetailsMap(prev => ({
+            ...prev,
+            [truck.truckId]: data.details || []
+          }));
 
-  // ✅ 1. Сначала кэш
-  if (cached && cachedTime && now - Number(cachedTime) < DETAILS_CACHE_TTL) {
-    const data = JSON.parse(cached);
-    setActiveTruck({
-      ...truck,
-      ...data,          // ← тут date / route / ratio
-      loading: false
-    });
-    return;
-  }
+          setActiveTruck({
+            ...truck,
+            details: data.details || []
+          });
 
-  // ❌ 2. Если нет — грузим
-  fetch(`${API}?id=${encodeURIComponent(truck.truckId)}`)
-    .then(r => r.json())
-    .then(data => {
-      if (!data?.error) {
-        localStorage.setItem(key, JSON.stringify(data));
-        localStorage.setItem(timeKey, String(Date.now()));
-
-        setActiveTruck({
-          ...truck,
-          ...data,
-          loading: false
-        });
-      }
-    })
-    .catch(() => {
-      setActiveTruck(prev => prev && { ...prev, loading: false });
-    });
-};
-
+          // сохраняем в cache
+          localStorage.setItem(
+            `truck_details_${truck.truckId}`,
+            JSON.stringify(data)
+          );
+          localStorage.setItem(
+            `truck_details_${truck.truckId}_time`,
+            String(Date.now())
+          );
+        }
+      });
+  };
 
 
   if (loadingList) {
