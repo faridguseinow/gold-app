@@ -2,20 +2,13 @@
     --f-light: "Light";
     --f-regular: "Regular";
     --f-bold: "Bold";
-    --gray: #eeeeee;
-    --bg: #fff;
-    --text: #000000;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --color-primary: #ecbb47;
-}
-
-.dark-theme {
     --gray: #1b2355;
     --bg: #080638;
     --text: #ffffff;
     --shadow: rgba(255, 255, 255, 0.1);
     --color-primary: #ecbb47;
 }
+
 
 // Fonts
 @font-face {

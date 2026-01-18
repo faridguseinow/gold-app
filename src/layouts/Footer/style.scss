@@ -1,15 +1,14 @@
 .bottom-nav {
     width: 100%;
-    height: calc(56px + env(safe-area-inset-bottom));
+    height: calc(60px + env(safe-area-inset-bottom));
     position: fixed;
     z-index: 999;
     bottom: 0;
     left: 0;
-    background: var(--bg);
     display: flex;
+    background: var(--bg);
     align-items: center;
-    justify-content: space-around;
-    border-radius: 16px 16px 0 0;
+    justify-content: center;
     box-shadow: 0 -2px 10px var(--shadow);
 
     .nav-button {
@@ -17,9 +16,12 @@
         margin: 10px;
         transition: all .1s ease;
         display: flex;
-        flex-direction: column;
         align-items: center;
+        text-decoration: none;
         gap: 8px;
+        padding: 5px 8px;
+        border-radius: 16px;
+        color: var(--text);
 
         &:active {
             color: var(--color-primary);
@@ -42,6 +44,8 @@
 
 
     .nav-button.active {
+        color: var(--color-primary);
+
         svg {
             path {
                 fill: var(--color-primary);

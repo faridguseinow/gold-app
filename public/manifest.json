@@ -1,7 +1,7 @@
 {
-  "name": "Golden Flowers",
-  "description": "Golden Flowers App",
-  "short_name": "Gold App",
+  "name": "Golden Oasis Flowers",
+  "description": "Golden Oasis Flowers App",
+  "short_name": "Gold Oasis App",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fff",

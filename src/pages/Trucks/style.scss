@@ -2,6 +2,98 @@
   padding: 72px 16px;
 }
 
+/* ================== FILTER ================== */
+
+.trucks-filter {
+  position: sticky;
+  top: 64px; // высота header
+  z-index: 40;
+  overflow: visible;
+
+  margin-bottom: 14px;
+  padding: 12px;
+
+  background: rgba(16, 22, 58, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* ===== SEARCH ===== */
+
+.trucks-filter .search-box {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.trucks-filter input {
+  width: 100%;
+  padding: 12px 44px 12px 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.08);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.trucks-filter input::placeholder {
+  opacity: 0.6;
+}
+
+.trucks-filter .search-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: .8;
+}
+
+/* ===== STATUS BUTTONS ===== */
+
+.status-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.status-filters button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  font-size: 13px;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.status-filters button.active {
+  background: #f3c64f;
+  color: #000;
+  font-weight: 600;
+}
+
+.status-filters button:active {
+  transform: scale(.96);
+}
+
+/* ===== RESET ===== */
+
+.status-filters .reset-btn {
+  background: rgba(255,255,255,.18);
+  color: #fff;
+}
+
+
+
+
 /* ===== GLOBAL LOADING ===== */
 
 .trucks-loading {
@@ -86,7 +178,7 @@
 
   .truck-loading {
     margin-top: 6px;
-    font-size: 12px;
+    font-size: 36px;
     opacity: 0.7;
   }
 }

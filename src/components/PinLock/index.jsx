@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './style.scss';
 
-import Logo from '../../assets/icons/logopng.png'
+import Logo from '../../assets/icons/logopng.png';
 
-const MASTER_PIN = '0000';
+const MASTER_PIN = '2543';
 
 export default function PinLock({ onSuccess }) {
   const [pin, setPin] = useState('');
   const [error, setError] = useState(false);
 
-  // ===== PIN INPUT =====
   const press = n => {
     if (pin.length >= 4) return;
 
@@ -18,6 +17,7 @@ export default function PinLock({ onSuccess }) {
 
     if (next.length === 4) {
       if (next === MASTER_PIN) {
+        // ❗️НИЧЕГО НЕ СОХРАНЯЕМ
         onSuccess();
       } else {
         setError(true);
@@ -41,7 +41,7 @@ export default function PinLock({ onSuccess }) {
       </div>
 
       <div className={`pin-dots ${error ? 'error' : ''}`}>
-        {[0,1,2,3].map(i => (
+        {[0, 1, 2, 3].map(i => (
           <span key={i} className={pin[i] ? 'filled' : ''} />
         ))}
       </div>

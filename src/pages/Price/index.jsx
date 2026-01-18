@@ -44,7 +44,6 @@ export default function Price() {
       <div className="header_search sticky-header">
         <div className="titles">
           <div className="title_left">
-            <h1>Прайслист</h1>
             <div className="font-size-controls">
               <button onClick={decreaseFontSize}>A–</button>
               <button onClick={increaseFontSize}>A+</button>

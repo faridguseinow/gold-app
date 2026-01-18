@@ -90,10 +90,7 @@ function App() {
 
   // 🔒 ПОКА PIN НЕ ВВЕДЁН — ТОЛЬКО ЭТО
   if (!unlocked) {
-    return <PinLock onSuccess={() => {
-      localStorage.setItem('pin_ok', '1');
-      setUnlocked(true);
-    }} />;
+    return <PinLock onSuccess={() => setUnlocked(true)} />;
   }
 
   // 🔓 ПОСЛЕ PIN — ПОЛНОЕ ПРИЛОЖЕНИЕ
