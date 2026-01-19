@@ -37,7 +37,7 @@ export default function PinLock({ onSuccess }) {
     <div className="pin-lock">
       <div className="pin-logo">
         <img src={Logo} alt="" />
-        <div className="pin-title">Приложение для сотрудников<br />Goldeon Flowers - Oasis Flowers</div>
+        <div className="pin-title">Приложение для сотрудников<br />Golden Flowers - Oasis Flowers</div>
       </div>
 
       <div className={`pin-dots ${error ? 'error' : ''}`}>
