@@ -10,8 +10,8 @@ export default function Index() {
   return (
     <div className="header">
       <div className="logo">
-        <img src={LogoGF} width={150} alt="logo" />
-        <img src={LogoOA} width={110} alt="logo" />
+        <img src={LogoGF} width={120} alt="logo" />
+        <img src={LogoOA} width={100} alt="logo" />
       </div>
     </div>
   );

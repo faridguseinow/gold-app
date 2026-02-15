@@ -20,35 +20,16 @@
 <body>
   <div id="root"></div>
   <script>
-    function updateThemeColor(color) {
-      let metaTheme = document.querySelector('meta[name="theme-color"]');
-      if (metaTheme) {
-        metaTheme.setAttribute('content', color);
-      } else {
-        metaTheme = document.createElement('meta');
-        metaTheme.setAttribute('name', 'theme-color');
-        metaTheme.setAttribute('content', color);
-        document.head.appendChild(metaTheme);
-      }
-    }
-
-    function applySystemTheme() {
-      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      updateThemeColor(isDark ? '#000000' : '#ffffff');
-    }
-
-    // Initial set on load
-    applySystemTheme();
-
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applySystemTheme);
-
-    // OPTIONAL: Example of manual theme toggle
-    // Call this function when user switches theme manually
-    function setManualTheme(isDark) {
-      updateThemeColor(isDark ? '#000000' : '#ffffff');
-    }
   </script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JHJZ6VQ1YY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JHJZ6VQ1YY');
+</script>
   
   <script type="module" src="/src/main.jsx"></script>
 </body>

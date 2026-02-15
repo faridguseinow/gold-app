@@ -9,6 +9,8 @@ import {
 import { useEffect, useState } from 'react';
 import { AliveScope, KeepAlive } from 'react-activation';
 
+import { SettingsProvider } from './context/SettingsContext';
+
 import './App.scss';
 import './reset.css';
 
@@ -16,7 +18,13 @@ import PinLock from './components/PinLock';
 
 import Contacts from './pages/Contacts';
 import Price from './pages/Price';
-import Trucks from './pages/Trucks';
+import TrucksHome from './pages/TrucksHome/index';
+import TrucksLoading from './pages/TrucksHome/loading';
+import TrucksEcuador from './pages/TrucksHome/ecuador';
+import TrucksExotics from './pages/TrucksHome/exotics';
+import TrucksChrysant from './pages/TrucksHome/chrysant';
+
+import Settings from './pages/Settings';
 
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
@@ -96,21 +104,35 @@ function App() {
   // 🔓 ПОСЛЕ PIN — ПОЛНОЕ ПРИЛОЖЕНИЕ
   return (
     <Router>
-      <AliveScope>
-        <ScrollHandler />
-        <SetupHandlers />
 
-        <Header />
+      <SettingsProvider>
+        <AliveScope>
+          <ScrollHandler />
+          <SetupHandlers />
 
-        <Routes>
-          <Route path="/contacts" element={<KeepAlive><Contacts /></KeepAlive>} />
-          <Route path="/price" element={<KeepAlive><Price /></KeepAlive>} />
-          <Route path="/trucks" element={<KeepAlive><Trucks /></KeepAlive>} />
-          <Route path="*" element={<Navigate to="/price" replace />} />
-        </Routes>
 
-        <Footer />
-      </AliveScope>
+
+          <Header />
+
+          <Routes>
+            <Route path="/settings" element={<KeepAlive><Settings /></KeepAlive>} />
+            <Route path="/contacts" element={<KeepAlive><Contacts /></KeepAlive>} />
+            <Route path="/price" element={<KeepAlive><Price /></KeepAlive>} />
+            <Route path="/truckshome" element={<KeepAlive><TrucksHome /></KeepAlive>} />
+            <Route path="/trucks/loading" element={<TrucksLoading />} />
+            <Route path="/trucks/ecuador" element={<TrucksEcuador />} />
+            <Route path="/trucks/exotics" element={<TrucksExotics />} />
+            <Route path="/trucks/chrysanthemum" element={<TrucksChrysant />} />
+            <Route path="*" element={<Navigate to="/settings" replace />} />
+          </Routes>
+
+          <Footer />
+
+
+
+
+        </AliveScope>
+      </SettingsProvider>
     </Router>
   );
 }

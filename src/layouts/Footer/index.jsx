@@ -1,27 +1,66 @@
 import React from 'react';
+import { useSettings } from '../../context/SettingsContext';
+import { NavLink, useLocation } from 'react-router-dom';
 import './style.scss';
-import { NavLink } from 'react-router-dom';
 
-export default function index() {
+export default function Footer() {
+  const location = useLocation();
+  const { settings } = useSettings();
+
+  const tabs = [
+    { key: 'contacts', path: '/contacts', label: 'Контакты' },
+    { key: 'price', path: '/price', label: 'Прайс-лист' },
+    { key: 'transport', path: '/truckshome', label: 'Транспорт' },
+    { key: 'settings', path: '/settings', label: 'Настройки' } 
+  ];
+
+  // 🔥 Фильтрация вкладок по настройкам
+const visibleTabs = tabs.filter(tab =>
+  tab.key === 'settings' || settings.tabs[tab.key]
+);
+
+
+  const activeIndex = visibleTabs.findIndex(tab =>
+    location.pathname.startsWith(tab.path)
+  );
+
   return (
     <nav className="bottom-nav">
 
-      {/* <NavLink className="nav-button" to="/contacts">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#666666"><path d="M800-86q-131 0-259-57T307-305Q201-411 144-539.5T87-799q0-32 21-53.5t53-21.5h161q37 0 60 18t31 52l25 119q6 31-.5 53T411-593l-103 90q16 26 37.5 52.5T396-396q26 26 50 45.5t48 33.5l101-98q20-19 44.5-25.5t53.5-.5l111 25q35 10 52.5 31t17.5 55v169q0 32-21.5 53.5T800-86Z" /></svg>
-        <div className='nav_line'></div>
-      </NavLink> */}
+      {visibleTabs.map(tab => (
+        <NavLink
+          key={tab.key}
+          to={tab.path}
+          className="nav-button"
+        >
+          {tab.key === 'contacts' && (
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3"><path d="M795-120q-116 0-236.5-56T335-335Q232-438 176-558.5T120-795q0-19.29 12.86-32.14Q145.71-840 165-840h140q14 0 24 10t14 25l26.93 125.64Q372-665 369.5-653.5t-10.73 19.73L259-533q26 44 55 82t64 72q37 38 78 69.5t86 55.5l95-98q10-11 23.15-15 13.15-4 25.85-2l119 26q15 4 25 16.04 10 12.05 10 26.96v135q0 19.29-12.86 32.14Q814.29-120 795-120ZM229-588l81-82-23-110H180q2 42 13.5 88.5T229-588Zm369 363q41 19 89 31t93 14v-107l-103-21-79 83ZM229-588Zm369 363Z"/></svg>
+          )}
 
-      <NavLink className="nav-button" to="/price">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M878-359 601-82q-18.29 18-41.14 27Q537-46 513-46t-46.86-9Q443.29-64 425-82L83-424q-17-17-27-39.88Q46-486.76 46-512v-277q0-51.56 36.72-88.28T171-914h277q24.7 0 47.85 9.5Q519-895 536-877l342 341q19 19 28 42t9 46.9q0 23.9-9 47T878-359ZM269.88-632Q294-632 311-648.88q17-16.88 17-41T311.12-731q-16.88-17-41-17T229-731.12q-17 16.88-17 41T228.88-649q16.88 17 41 17Z" /></svg>Прайслист        
- 
-      </NavLink>
+          {tab.key === 'price' && (
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3"><path d="M863-404 557-97q-9 8.5-20.25 12.75T514.25-80Q503-80 492-84.5T472-97L98-472q-8-8-13-18.96-5-10.95-5-23.04v-306q0-24.75 17.63-42.38Q115.25-880 140-880h307q12.07 0 23.39 4.87Q481.7-870.25 490-862l373 373q9.39 9 13.7 20.25 4.3 11.25 4.3 22.5t-4.5 22.75Q872-412 863-404ZM516-138l306-307-375-375H140v304l376 378ZM245-664q21 0 36.5-15.5T297-716q0-21-15.5-36.5T245-768q-21 0-36.5 15.5T193-716q0 21 15.5 36.5T245-664Zm236 185Z"/></svg>
+          )}
 
-      <NavLink className="nav-button" to="/trucks">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M240-160q-50 0-85-35t-35-85H40v-440q0-33 23.5-56.5T120-800h560v160h120l120 160v200h-80q0 50-35 85t-85 35q-50 0-85-35t-35-85H360q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T280-280q0-17-11.5-28.5T240-320q-17 0-28.5 11.5T200-280q0 17 11.5 28.5T240-240Zm480 0q17 0 28.5-11.5T760-280q0-17-11.5-28.5T720-320q-17 0-28.5 11.5T680-280q0 17 11.5 28.5T720-240Zm-40-200h170l-90-120h-80v120Z" /></svg>Транспорт
+          {tab.key === 'transport' && (
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3"><path d="M188-196q-32-36-27-85H61l13-60h112q15-18 36.5-28.5T270-380q26 0 47.5 10.5T354-341h198l92-399H186l3-13q5-21 21-34t37-13h472l-39 170h125l114 152-39 197h-80q5 49-27.5 85T690-160q-50 0-82-36t-27-85H380q5 49-27.5 85T270-160q-50 0-82-36Zm446-234h215l6-33-80-107H666l-32 140Zm1-273 9-37-92 399 8-36 34-146 41-180ZM22-437l15-60h220l-15 60H22Zm80-146 15-60h260l-15 60H102Zm168 363q21 0 35.5-15t14.5-35q0-21-14.5-35.5T270-320q-20 0-35 14.5T220-270q0 20 15 35t35 15Zm420 0q21 0 35.5-15t14.5-35q0-21-14.5-35.5T690-320q-20 0-35 14.5T640-270q0 20 15 35t35 15Z"/></svg>
+          )}
 
-      </NavLink>
+          {tab.key === 'settings' && (
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#fff"><path d="m388-80-20-126q-19-7-40-19t-37-25l-118 54-93-164 108-79q-2-9-2.5-20.5T185-480q0-9 .5-20.5T188-521L80-600l93-164 118 54q16-13 37-25t40-18l20-127h184l20 126q19 7 40.5 18.5T669-710l118-54 93 164-108 77q2 10 2.5 21.5t.5 21.5q0 10-.5 21t-2.5 21l108 78-93 164-118-54q-16 13-36.5 25.5T592-206L572-80H388Zm48-60h88l14-112q33-8 62.5-25t53.5-41l106 46 40-72-94-69q4-17 6.5-33.5T715-480q0-17-2-33.5t-7-33.5l94-69-40-72-106 46q-23-26-52-43.5T538-708l-14-112h-88l-14 112q-34 7-63.5 24T306-642l-106-46-40 72 94 69q-4 17-6.5 33.5T245-480q0 17 2.5 33.5T254-413l-94 69 40 72 106-46q24 24 53.5 41t62.5 25l14 112Zm44-210q54 0 92-38t38-92q0-54-38-92t-92-38q-54 0-92 38t-38 92q0 54 38 92t92 38Zm0-130Z"/></svg>
+          )}
+        </NavLink>
+      ))}
 
+      {visibleTabs.length > 0 && (
+        <div
+          className="footer-indicator"
+          style={{
+            width: `${100 / visibleTabs.length}%`,
+            transform: `translateX(${activeIndex * 100}%)`
+          }}
+        />
+      )}
 
     </nav>
-  )
+  );
 }

@@ -1,10 +1,15 @@
 .pin-lock {
   height: 100vh;
-  background: #1b2355;
+  background: var(--bg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 32px;
+  }
 }
 
 .pin-logo {
@@ -50,9 +55,10 @@
   gap: 14px;
 
   button {
+    width: 64px;
     height: 64px;
     font-size: 25px;
-    border-radius: 14px;
+    border-radius: 50%;
     border: 1px solid var(--text);
     background: var(--bg);
     cursor: pointer;

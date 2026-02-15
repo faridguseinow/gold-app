@@ -40,6 +40,8 @@ export default function PinLock({ onSuccess }) {
         <div className="pin-title">Приложение для сотрудников<br />Golden Flowers - Oasis Flowers</div>
       </div>
 
+      <h1>Введите пин-код</h1>
+
       <div className={`pin-dots ${error ? 'error' : ''}`}>
         {[0, 1, 2, 3].map(i => (
           <span key={i} className={pin[i] ? 'filled' : ''} />
